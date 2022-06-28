@@ -1,9 +1,8 @@
-
-// import $ from 'jquery';
+import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import DinoIpsum from './js/Dino.js';
+import DinoService from './js/dino-service.js';
 
 function clearFields() {
   $('#paragraph').text("");
@@ -16,10 +15,16 @@ $(document).ready(function () {
     // UI code here
     let paragraph = $('#paragraph').val();
     let word = $('#word').val();
+    let language = "HTML";
     clearFields();
-    let promise = DinoIpsum.getDino(paragraph, word);
+    let promise = DinoService.getDino(paragraph, word);
     promise.then(function(response) {
-      $('.output').html(response);
+      if (language === 'JSON') {
+        const body = JSON.parse(response);
+        $('.output').text(`${body}`);
+      } else {
+        $('.output').html(`${response}`);
+      }
     }, function(error) {
       $('.showError').text(`There was an error processing your request; ${error}`);
     });
