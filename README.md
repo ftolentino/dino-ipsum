@@ -2,7 +2,7 @@
 
 _Epicodus Week 6 - Dino Ipsum API Promises practice_
 
-#### By _**Filmer Tolentino**_
+#### By _**Filmer Tolentino**_, _**Alex Shelvin**_
 
 ## Technologies Used
 
